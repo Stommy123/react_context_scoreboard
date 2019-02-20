@@ -3,16 +3,15 @@ import { GlobalContext } from "../context";
 import { Header } from "./header";
 import { Player } from "./player";
 import { PlayerForm } from "./playerForm";
-import { PlayerDetail } from "./playerDetail";
+import { ExpandedPlayer } from "./expandedPlayer";
 
 export const Scoreboard = _ => {
   const {
     state: {
-      player: { players, selectedPlayerIndex }
+      player: { players, expandedPlayerId }
     }
   } = useContext(GlobalContext);
-  const selectedPlayer =
-    selectedPlayerIndex !== -1 && players[selectedPlayerIndex];
+  const expandedPlayer = expandedPlayerId !== -1 && players[expandedPlayerId];
   const highScore = Math.max(...players.map(p => p.score));
   return (
     <div className="scoreboard">
@@ -23,7 +22,7 @@ export const Scoreboard = _ => {
         </div>
       ))}
       <PlayerForm />
-      <PlayerDetail selectedPlayer={selectedPlayer} />
+      <ExpandedPlayer expandedPlayer={expandedPlayer} />
     </div>
   );
 };

@@ -8,7 +8,7 @@ const year = date.getFullYear();
 export const player = {
   initialState: {
     players: data,
-    selectedPlayerIndex: -1
+    expandedPlayerId: -1
   },
   reducers: {
     addPlayer: (state, { name }) => {
@@ -46,13 +46,13 @@ export const player = {
         players: updatedPlayerList
       };
     },
-    selectPlayer: (state, { id }) => ({
+    showPlayerDetail: (state, { id }) => ({
       ...state,
-      selectedPlayerIndex: id
+      expandedPlayerId: id
     }),
     closePlayerDetail: state => ({
       ...state,
-      selectedPlayerIndex: -1
+      expandedPlayerId: -1
     })
   }
 };

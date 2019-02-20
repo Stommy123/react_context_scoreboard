@@ -1,30 +1,31 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context";
 
-export const PlayerDetail = ({ selectedPlayer }) => {
+export const ExpandedPlayer = ({ expandedPlayer }) => {
+  const { name, score, created, updated } = expandedPlayer;
   const {
     dispatch: {
       player: { closePlayerDetail }
     }
   } = useContext(GlobalContext);
-  return selectedPlayer ? (
+  return expandedPlayer ? (
     <div className="player-detail">
       <a className="close-detail" onClick={closePlayerDetail}>
         ✖
       </a>
-      <h3>{selectedPlayer.name}</h3>
+      <h3>{name}</h3>
       <ul>
         <li>
           <span>Score: </span>
-          {selectedPlayer.score}
+          {score}
         </li>
         <li>
           <span>Created: </span>
-          {selectedPlayer.created}
+          {created}
         </li>
         <li>
           <span>Updated: </span>
-          {selectedPlayer.updated}
+          {updated}
         </li>
       </ul>
     </div>
@@ -34,5 +35,3 @@ export const PlayerDetail = ({ selectedPlayer }) => {
     </div>
   );
 };
-
-export default PlayerDetail;

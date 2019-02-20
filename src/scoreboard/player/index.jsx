@@ -6,12 +6,12 @@ import { Counter } from "./counter";
 export const Player = ({ player: { id, name, score }, highScore }) => {
   const {
     dispatch: {
-      player: { selectPlayer, removePlayer }
+      player: { showPlayerDetail, removePlayer }
     }
   } = useContext(GlobalContext);
   return (
     <div className="player">
-      <div className="player-name" onClick={_ => selectPlayer({ id })}>
+      <div className="player-name" onClick={_ => showPlayerDetail({ id })}>
         <a className="remove-player" onClick={_ => removePlayer({ id })}>
           ✖
         </a>
